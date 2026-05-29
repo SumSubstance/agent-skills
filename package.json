@@ -1,0 +1,51 @@
+{
+  "name": "@sumsub/agent-skills",
+  "version": "1.0.1",
+  "description": "Agent Skills for the Sumsub API — applicant levels, questionnaires, PoA presets, workflows, transaction monitoring, WebSDK integration, and regulation analysis.",
+  "keywords": [
+    "skill",
+    "skills",
+    "sumsub",
+    "kyc",
+    "kyb",
+    "aml",
+    "kyt",
+    "transaction-monitoring",
+    "questionnaire",
+    "workflow",
+    "websdk",
+    "compliance",
+    "identity-verification"
+  ],
+  "homepage": "https://github.com/SumSubstance/agent-skills#readme",
+  "bugs": {
+    "url": "https://github.com/SumSubstance/agent-skills/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SumSubstance/agent-skills.git"
+  },
+  "license": "MIT",
+  "author": "Sumsub",
+  "files": [
+    "skills/",
+    "skills.json",
+    "README.md"
+  ],
+  "claude": {
+    "skills": [
+      "./skills/sumsub-analyze-regulation",
+      "./skills/sumsub-api-auth",
+      "./skills/sumsub-api-generic",
+      "./skills/sumsub-check-permissions",
+      "./skills/sumsub-check-skills-version",
+      "./skills/sumsub-create-level",
+      "./skills/sumsub-create-poa-preset",
+      "./skills/sumsub-create-questionnaire",
+      "./skills/sumsub-create-transaction",
+      "./skills/sumsub-create-workflow",
+      "./skills/sumsub-integrate-websdk",
+      "./skills/sumsub-manage-webhooks"
+    ]
+  }
+}

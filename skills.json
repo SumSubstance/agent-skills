@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/skills/main/schema/skills.json",
+  "name": "@sumsub/agent-skills",
+  "version": "1.0.1",
+  "skills": [
+    {
+      "name": "sumsub-api-auth",
+      "path": "./skills/sumsub-api-auth",
+      "entry": "SKILL.md",
+      "description": "Authenticate to the Sumsub API with an App Token + secret key (HMAC-SHA256 request signing). Sandbox tokens only."
+    },
+    {
+      "name": "sumsub-create-questionnaire",
+      "path": "./skills/sumsub-create-questionnaire",
+      "entry": "SKILL.md",
+      "description": "Create or update a Sumsub KYC questionnaire definition. POST /resources/api/questionnaires to create (409 if id exists), PATCH same path to update (404 if id is unknown), GET /resources/api/questionnaires/{id} to read."
+    },
+    {
+      "name": "sumsub-create-poa-preset",
+      "path": "./skills/sumsub-create-poa-preset",
+      "entry": "SKILL.md",
+      "description": "Create or update a Sumsub PoaStepSettings (Proof-of-Address preset). POST /resources/api/poaStepSettings to create, PATCH same path to update (id in body), GET /resources/api/poaStepSettings/{id} to read. Returned id attaches to a level's PROOF_OF_RESIDENCE doc-set."
+    },
+    {
+      "name": "sumsub-create-level",
+      "path": "./skills/sumsub-create-level",
+      "entry": "SKILL.md",
+      "description": "Create or update a Sumsub ApplicantLevel. POST /resources/applicants/-/levels to create, PATCH same path to update (id in body), GET /resources/applicants/-/levels/{id} to read. Compact docSet spec → full payload."
+    },
+    {
+      "name": "sumsub-create-cross-check-preset",
+      "path": "./skills/sumsub-create-cross-check-preset",
+      "entry": "SKILL.md",
+      "description": "Create or update a Sumsub cross-check preset (POI↔POA name/address comparison rules) via POST/PATCH /resources/api/crossCheckPresets. Use ONLY when the user explicitly asks to override cross-check defaults; Sumsub's default preset is tuned for best approval rate and should not be replaced casually."
+    },
+    {
+      "name": "sumsub-create-workflow",
+      "path": "./skills/sumsub-create-workflow",
+      "entry": "SKILL.md",
+      "description": "Build & POST a Sumsub ApplicantWorkflow via the public API. Compact node/edge spec → full payload (parsed when: expressions) → POST /resources/api/applicantWorkflows; publish via PUT /{id}/revisionStatus. Defaults to draft."
+    },
+    {
+      "name": "sumsub-create-transaction",
+      "path": "./skills/sumsub-create-transaction",
+      "entry": "SKILL.md",
+      "description": "Submit a transaction to Sumsub Transaction Monitoring (KYT). Compact spec → full KytTxnData payload → POST /resources/applicants/{id|-}/kyt/txns/-/data (auto-routed for existing vs non-existing applicants). Covers finance, travelRule, and userPlatformEvent variants."
+    },
+    {
+      "name": "sumsub-integrate-websdk",
+      "path": "./skills/sumsub-integrate-websdk",
+      "entry": "SKILL.md",
+      "description": "End-to-end Sumsub WebSDK integration for a web app. Covers level setup, server-signed access-token endpoint, snsWebSdk init (vanilla + React), client lifecycle events, webhook signature verification (including ngrok-based local testing), server-side status reads, sandbox testing, and go-live checklist."
+    },
+    {
+      "name": "sumsub-api-generic",
+      "path": "./skills/sumsub-api-generic",
+      "entry": "SKILL.md",
+      "description": "Fallback catch-all for Sumsub API tasks not covered by a more specific skill. Searches the bundled OpenAPI schema, builds the payload, signs with App Token, and validates."
+    },
+    {
+      "name": "sumsub-check-permissions",
+      "path": "./skills/sumsub-check-permissions",
+      "entry": "SKILL.md",
+      "description": "Fetch the current tenant's allowed entitlements (BackgroundCheckTarget list). Returns JSON with `allowed` (array of permission keys) and `descriptions` (map of key → label). Called by create-* skills before building a payload to gate entitlement-required features."
+    },
+    {
+      "name": "sumsub-check-skills-version",
+      "path": "./skills/sumsub-check-skills-version",
+      "entry": "SKILL.md",
+      "description": "Check whether the installed Sumsub agent-skills package is up to date. Fetches the canonical version from https://api.sumsub.com/llms.txt and compares it to the locally installed version: warns on a patch-level drift, and recommends re-running `npx skills add SumSubstance/agent-skills` on a minor/major drift."
+    },
+    {
+      "name": "sumsub-analyze-regulation",
+      "path": "./skills/sumsub-analyze-regulation",
+      "entry": "SKILL.md",
+      "description": "Analyze a regulation document (PDF or text) and produce a Sumsub configuration plan — mapping regulatory requirements to Sumsub entities (levels, questionnaires, PoA presets, TM rules, workflows). Entry point before invoking create-level, create-questionnaire, create-poa-preset, create-workflow, and other skills."
+    },
+    {
+      "name": "sumsub-manage-webhooks",
+      "path": "./skills/sumsub-manage-webhooks",
+      "entry": "SKILL.md",
+      "description": "Manage Sumsub clientWebhooks (event subscriptions) via /resources/clientWebhooks: list (oldest 50), GET /{id} for one, POST to create, PATCH to update, and disable/enable. Sandbox only — production webhooks must be created by a human directly in the dashboard. Delete and per-webhook delivery stats are dashboard-only and not covered by this skill."
+    }
+  ]
+}
