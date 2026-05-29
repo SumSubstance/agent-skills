@@ -67,7 +67,7 @@
       "name": "sumsub-check-skills-version",
       "path": "./skills/sumsub-check-skills-version",
       "entry": "SKILL.md",
-      "description": "Check whether the installed Sumsub agent-skills package is up to date. Fetches the canonical version from https://api.sumsub.com/llms.txt and compares it to the locally installed version: warns on a patch-level drift, and recommends re-running `npx skills add SumSubstance/agent-skills` on a minor/major drift."
+      "description": "Check whether the installed Sumsub agent-skills package is up to date. Fetches the canonical version from https://api.sumsub.com/llms.txt and compares it to the locally installed version: warns on a patch-level drift, and recommends re-running `npx skills add SumSubstance/agent-skills --all` on a minor/major drift."
     },
     {
       "name": "sumsub-analyze-regulation",

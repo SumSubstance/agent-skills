@@ -5,7 +5,7 @@ Agent skills for the [Sumsub](https://sumsub.com) API — works with any coding 
 ## Install
 
 ```bash
-npx skills add SumSubstance/agent-skills
+npx skills add SumSubstance/agent-skills --all
 ```
 
 This fetches the repo and installs each skill into your agent's skills directory (for Claude Code, typically `~/.claude/skills/` for global install or `.claude/skills/` for project-local install).
@@ -35,7 +35,7 @@ cp -r skills/sumsub-create-questionnaire ~/.claude/skills/
 | [`sumsub-integrate-websdk`](skills/sumsub-integrate-websdk/) | End-to-end Sumsub WebSDK integration recipe — level setup → server-signed access-token endpoint → `snsWebSdk` init (vanilla + React) → client lifecycle events → webhook signature verification (incl. ngrok-based local testing) → go-live checklist. |
 | [`sumsub-api-generic`](skills/sumsub-api-generic/) | Fallback catch-all for anything Sumsub-API-related not covered above. Searches the bundled OpenAPI schema, inspects the operation, signs with App Token, and calls it. |
 | [`sumsub-check-permissions`](skills/sumsub-check-permissions/) | Fetch the current tenant's allowed entitlements (`BackgroundCheckTarget` list) — returns `allowed` (permission keys) and `descriptions` (key → label). Called by the create-* skills to gate entitlement-required features before building a payload. |
-| [`sumsub-check-skills-version`](skills/sumsub-check-skills-version/) | Check whether the installed skills are up to date — fetches the canonical version from `https://api.sumsub.com/llms.txt`, compares it to the locally installed version, and recommends `npx skills add SumSubstance/agent-skills` when behind. |
+| [`sumsub-check-skills-version`](skills/sumsub-check-skills-version/) | Check whether the installed skills are up to date — fetches the canonical version from `https://api.sumsub.com/llms.txt`, compares it to the locally installed version, and recommends `npx skills add SumSubstance/agent-skills --all` when behind. |
 
 ## Layout
 
